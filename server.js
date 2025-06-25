@@ -10,8 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/levels', require('./routes/levels'));
-app.use('/questions', require('./routes/questions'));
+app.use('/levels', require('./api/levels'));
+app.use('/questions', require('./api/questions'));
 
 // Optional: Serve static frontend if needed
 app.use(express.static(path.join(__dirname, 'public')));
