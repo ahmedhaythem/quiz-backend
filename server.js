@@ -1,4 +1,5 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -12,16 +13,16 @@ app.use(express.json());
 app.use('/levels', require('./routes/levels'));
 app.use('/questions', require('./routes/questions'));
 
-// Serve static frontend files if needed (optional)
+// Optional: Serve static frontend if needed
 app.use(express.static(path.join(__dirname, 'public')));
 
-// MongoDB connection (environment variable for Render)
-mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://ahmedhaythem240:a01097931183@cluster0.oucfxpt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB error:', err));
 
-// Start server
+// Start Server
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`🚀 Server running on port ${port}`));

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const Level = require('./models/level');
 const Question = require('./models/question');
@@ -5,7 +6,7 @@ const Question = require('./models/question');
 async function seed() {
   try {
     // Use await here to ensure connection is established first
-    await mongoose.connect('mongodb://127.0.0.1:27017/quiz_game', {
+    await mongoose.connect(process.env.MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
