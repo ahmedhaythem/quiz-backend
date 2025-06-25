@@ -16,7 +16,7 @@ app.use('/questions', require('./routes/questions'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // MongoDB connection (environment variable for Render)
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/quiz_game', {
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://ahmedhaythem240:a01097931183@cluster0.oucfxpt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => console.log('✅ MongoDB connected'))
