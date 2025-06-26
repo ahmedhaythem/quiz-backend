@@ -5,6 +5,11 @@
   ],
   "routes": [
     { "src": "/levels", "dest": "/api/levels.js" },
-    { "src": "/questions", "dest": "/api/questions.js" }
+    
+    
+    { "src": "/questions/([0-9]+)", "dest": "/api/questions.js" },
+    
+    
+    { "src": "/questions/check", "dest": "/api/questions.js" }
   ]
 }
