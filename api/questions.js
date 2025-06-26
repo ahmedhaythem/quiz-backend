@@ -2,11 +2,20 @@ const connectDB = require('../lib/connectDB');
 const Question = require('../models/question');
 
 module.exports = async (req, res) => {
+  // ✅ Add CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // ✅ Handle preflight (OPTIONS) request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   try {
     await connectDB();
 
     if (req.method === 'GET') {
-      // Extract level from dynamic route (/questions/1)
       const parts = req.url.split('/');
       const levelStr = parts[parts.length - 1];
       const level = parseInt(levelStr);
