@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
-const LevelSchema = new mongoose.Schema({
-  level: { type: Number, required: true, unique: true },
-  name: { type: String, required: true }
+const levelSchema = new mongoose.Schema({
+  level: Number,
+  name: String,
 });
 
-module.exports = mongoose.model('Level', LevelSchema);
+module.exports = mongoose.models.Level || mongoose.model('Level', levelSchema);

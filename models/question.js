@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
-const QuestionSchema = new mongoose.Schema({
-  level: { type: Number, required: true },
-  question: { type: String, required: true },
+const questionSchema = new mongoose.Schema({
+  level: Number,
+  question: String,
   choices: {
     A: String,
     B: String,
     C: String,
-    D: String
+    D: String,
   },
-  correct_answer: { type: String, enum: ['A', 'B', 'C', 'D'], required: true }
+  correct_answer: String,
 });
 
-module.exports = mongoose.model('Question', QuestionSchema);
+module.exports = mongoose.models.Question || mongoose.model('Question', questionSchema);

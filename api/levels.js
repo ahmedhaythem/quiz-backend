@@ -1,11 +1,13 @@
-const mongoose = require('mongoose');
+const connectDB = require('../lib/connectDB');
 const Level = require('../models/level');
 
-mongoose.connect(process.env.MONGO_URI);
-
 module.exports = async (req, res) => {
-  if (req.method === 'GET') {
+  try {
+    await connectDB();
     const levels = await Level.find();
     res.status(200).json(levels);
+  } catch (err) {
+    console.error('❌ Error fetching levels:', err);
+    res.status(500).json({ error: 'Server error' });
   }
 };
