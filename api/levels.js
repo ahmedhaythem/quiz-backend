@@ -8,6 +8,6 @@ module.exports = async (req, res) => {
     res.status(200).json(levels);
   } catch (err) {
     console.error('❌ Error fetching levels:', err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'Server error', message: err.message });
   }
 };
